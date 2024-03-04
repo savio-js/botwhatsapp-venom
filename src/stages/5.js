@@ -13,7 +13,7 @@ export const finalStage = {
       storage[from].stage = STAGES.INICIAL
       return VenomBot.getInstance().sendText({
         to: from,
-        message: '🔚 *Atendimento encerrado* 🔚',
+        message: '🔚 *Atendimento encerrado por falta de interacão* 🔚',
       })
     }
 

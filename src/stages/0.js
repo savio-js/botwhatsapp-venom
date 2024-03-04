@@ -8,14 +8,13 @@ export const initialStage = {
 
     const venombot = await VenomBot.getInstance()
 
-    const message = `
-      👋 Olá, como vai?
-      Eu sou Carlos, o *assistente virtual* da ${venombot.getSessionName}.
+    const message = `👋 Olá, como vai?
+       Seja bem vindo a ${venombot.getSessionName} - cirurgia plástica.
       *Posso te ajudar?* 🙋‍♂️
       -----------------------------------
-      1️⃣ - FAZER PEDIDO
-      2️⃣ - VERIFICAR TAXA DE ENTREGA
-      0️⃣ - FALAR COM ATENDENTE
+      1️⃣ - AGENDAR CONSULTA 📲
+      2️⃣ - FALAR COM ATENDENTE 👩🏻‍💻
+      3️⃣ - LOCALIZAÇÃO DA CLÍNICA 📌
     `
     await venombot.sendText({ to: from, message })
   },

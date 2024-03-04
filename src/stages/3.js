@@ -4,27 +4,23 @@ import { STAGES } from './index.js'
 
 export const stageThree = {
   async exec({ from, message }) {
-    storage[from].address = message
-    storage[from].stage = STAGES.PEDIDO
+    storage[from].data = message
+    storage[from].stage = STAGES.INICIAL
 
-    let msg = 'Pedido *CANCELADO* com sucesso. \n Volte Sempre!'
-    if (message === '*') {
+    let msg = 'Atendimento *ENCERRADO* com sucesso. \n Volte Sempre!'
+
+
+    if (message === 'ENCERRAR') {
       storage[from].stage = STAGES.INICIAL
     } else {
-      const itens = storage[from].itens
-      const desserts = itens.map((item) => item.description).join(', ')
 
-      const total = storage[from].itens.length
-
+      storage[from].stage = STAGES.ATENDIMENTO
       msg =
-        `🗒️ *RESUMO DO PEDIDO*: \n\n🧁 Sabores: *${desserts}* \n🚚 Taxa de entrega: *a confirmar*. \n📍 Endereço: *${message}* \n💰 Valor dos bolos: *${
-          total * 6
-        },00 reais*. \n⏳ Tempo de entrega: *50 minutos*. \n\n` +
-        '🔊 ```Agora, informe a forma de pagamento e se vai precisar de troco, por gentileza.```'
+        '🔊 ```Aguarde, um atendente já entra em contato com você.```'
+      
     }
 
     await VenomBot.getInstance().sendText({ to: from, message: msg })
 
-    // return '✅ *Prontinho, pedido feito!* \n\nAgora, se você ainda não sabe o valor da taxa de entrega para sua região, vou te passar para um atendente para que ele verique o valor da *taxa de entrega*. \n\n⏳ *Aguarde um instante*.'
   },
 }

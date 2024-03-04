@@ -1,14 +1,12 @@
 import { VenomBot } from '../venom.js'
-import { menu } from '../menu.js'
 import { storage } from '../storage.js'
-import { neighborhoods } from './neighborhoods.js'
 import { initialStage } from './0.js'
 import { STAGES } from './index.js'
 
 export const stageOne = {
   async exec(params) {
     const message = params.message.trim()
-    const isMsgValid = /[0|1|2]/.test(message)
+    const isMsgValid = /[1|2|3]/.test(message)
 
     let msg =
       '❌ *Digite uma opção válida, por favor.* \n⚠️ ```APENAS UMA OPÇÃO POR VEZ``` ⚠️'
@@ -34,41 +32,42 @@ export const stageOne = {
 
 const options = {
   1: () => {
-    let message = '🚨  CARDÁPIO  🚨\n\n'
-
-    Object.keys(menu).forEach((value) => {
-      message += `${numbers[value]} - _${menu[value].description}_ \n`
-    })
+    let message = '🚨  SEGUE LINK DO NOSSO SISTEMA DE AGENDAMENTO:\n\n' +
+      '✅ Link: https://linktr.ee/clinnicarequinte \n' +
+      '\n-----------------------------------\n\n1️⃣ - ```VOLTAR AO MENU PRINCIPAL``` \n2️⃣ - ```ENCERRAR atendimento```'
 
     return {
       message,
-      nextStage: STAGES.CARRINHO,
+      nextStage: STAGES.VOLTAR_MENU,
     }
   },
+
   2: () => {
-    const message =
-      '\n-----------------------------------\n1️⃣ - ```FAZER PEDIDO``` \n0️⃣ - ```FALAR COM ATENDENTE```\n\n' +
-      neighborhoods +
-      '\n-----------------------------------\n1️⃣ - ```FAZER PEDIDO``` \n0️⃣ - ```FALAR COM ATENDENTE``` '
-
-    return {
-      message,
-      nextStage: null,
-    }
-  },
-  0: () => {
     return {
       message:
         '🔃 Encaminhando você para um atendente. \n⏳ *Aguarde um instante*.\n \n⚠️ A qualquer momento, digite *ENCERRAR* para encerrar o atendimento. ⚠️',
       nextStage: STAGES.FALAR_COM_ATENDENTE,
     }
   },
+
+  3: () => {
+    const message =
+      ' ```Nossa Clínica está localizada no centro de São Carlos, na Rua Conde do Pinhal, 2746.```\n\n' +
+      '\n-----------------------------------\n ```📍 Mapa: https://maps.app.goo.gl/TiKAex7ZX3BsLqnZ8``` ' +
+      '\n-----------------------------------\n1️⃣ - ```VOLTAR AO MENU PRINCIPAL``` \n2️⃣ - ```ENCERRAR atendimento```'
+
+
+    return {
+      message,
+      nextStage: STAGES.VOLTAR_MENU,
+
+    }
+  },
+
 }
 
 const numbers = {
   1: '1️⃣',
   2: '2️⃣',
   3: '3️⃣',
-  4: '4️⃣',
-  5: '5️⃣',
 }

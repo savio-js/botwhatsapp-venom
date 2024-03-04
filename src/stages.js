@@ -19,7 +19,7 @@ export const stages = [
     stage: stageOne,
   },
   {
-    descricao: 'Address',
+    descricao: 'Data',
     stage: stageTwo,
   },
   {
@@ -44,7 +44,7 @@ export function getStage({ from }) {
   storage[from] = {
     stage: 0,
     itens: [],
-    address: '',
+    data: '',
   }
 
   return storage[from].stage
