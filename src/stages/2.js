@@ -22,13 +22,19 @@ export const stageTwo = {
 
 const options = {
   '1': () => {
-    
-    const message =
-      '✅ *VOLTANDO ...*.'
 
+    const message =
+   `👋 Olá, como vai?
+    Seja bem vindo a Clínica Requinte - cirurgia plástica.
+    *Posso te ajudar?* 🙋‍♂️
+   -----------------------------------
+   1️⃣ - AGENDAR CONSULTA 📲
+   2️⃣ - FALAR COM ATENDENTE 👩🏻‍💻
+   3️⃣ - LOCALIZAÇÃO DA CLÍNICA 📌
+ `
     return {
       message,
-      nextStage: STAGES.INICIAL,
+      nextStage: STAGES.MENU,
     }
   },
   '2': () => {

@@ -15,8 +15,10 @@ export const finalStage = {
         to: from,
         message: '🔚 *Atendimento encerrado por falta de interacão* 🔚',
       })
+    }else {
+      storage[from].stage = STAGES.ATENDIMENTO
     }
 
-    storage[from].finalStage.endsIn = new Date().setSeconds(60) // more 1 minute of inactivity
+    storage[from].finalStage.endsIn = new Date().setSeconds(300) // more 1 minute of inactivity
   },
 }

@@ -12,5 +12,4 @@ export const STAGES = {
   FALAR_COM_ATENDENTE: '3',
   ATENDIMENTO: '4',
   ENCERRAR: '5',
-
 }

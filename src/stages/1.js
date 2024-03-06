@@ -21,11 +21,12 @@ export const stageOne = {
 
     if (storage[params.from].stage === STAGES.INICIAL) {
       await initialStage.exec(params)
-    } else if (storage[params.from].stage === STAGES.FALAR_COM_ATENDENTE) {
+    } else if (storage[params.from].stage === STAGES.FALAR_COM_ATENDENTE ||
+      storage[params.from].stage === STAGES.ATENDIMENTO) {
       storage[params.from].finalStage = {
         startsIn: new Date().getTime(),
-        endsIn: new Date().setSeconds(60), // 1 minute of inactivity
-      }
+        endsIn: new Date().setSeconds(300), // 1 minute of inactivity
+      } 
     }
   },
 }
@@ -65,7 +66,6 @@ const options = {
   },
 
 }
-
 const numbers = {
   1: '1️⃣',
   2: '2️⃣',
